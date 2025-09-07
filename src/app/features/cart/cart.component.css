@@ -1,0 +1,9 @@
+.my-left span {
+    display: inline-block;
+    transition: transform .5s;
+}
+
+.my-left h2:hover span {
+    transform: translateX(-10px);
+
+}

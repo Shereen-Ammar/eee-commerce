@@ -1,0 +1,28 @@
+<section class="py-[60px]">
+    <div class="container">
+        <h1
+            class=" py-[30px] text-center text-[45px] font-[600] leading-[32px] text-secondColor [text-shadow:_2px_2px_3px_rgba(86,8,94,0.5)]">
+            Details Product</h1>
+        <div class="grid sm:grid-cols-12 items-center">
+            <div class="col-span-3 ps-[20px]">
+                <img [src]="productDetails.imageCover" class="w-full" [alt]="productDetails.title">
+            </div>
+            <div class="col-span-9 px-[60px]">
+                <h2 class="text-mainColor py-[10px] text-xl">{{productDetails.title}}</h2>
+                <p class=" text-gray-700 italic text-xl">{{productDetails.description}}</p>
+                <h2 class="pt-[10px] pb-[10px] text-xl">{{productDetails.category.name}}</h2>
+
+                <div class="flex items-center justify-between">
+                    <span class="text-3xl">{{productDetails.price}} EGP</span>
+                    <span class="pe-[20px] text-xl"><i class="fas fa-star text-yellow-500"></i>
+                        {{productDetails.ratingsAverage}}</span>
+                </div>
+
+                <button (click)="addProductToCart(productDetails._id)"
+                    class="disabled:bg-gray-600 disabled:cursor-not-allowed py-[5px] rounded bg-secondColor text-white w-full border-[rgb(33, 6, 41)] cursor-pointer hover:bg-[#9b069b] transition-all duration-300 translate-y-[140%] group-hover/card:translate-y-0 transition-all duration-500">Add
+                    To Cart</button>
+            </div>
+        </div>
+    </div>
+
+</section>

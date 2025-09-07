@@ -1,0 +1,45 @@
+<section class="container mx-auto my-10 ">
+    <div class="container">
+        <h1 class="text-3xl font-[600] text-center mb-6">My Orders</h1>
+
+        <div *ngIf="orders.length > 0; else noOrders">
+            <div *ngFor="let order of orders" class="mb-10 p-6 shadow rounded-xl bg-gray-100 w-[85%] m-auto px-[4.0px]">
+
+                <h2 class="text-xl font-semibold mb-4">Order ID: {{ order.id }}</h2>
+                <p class="mb-2"><strong>Payment:</strong> {{ order.paymentMethodType }}</p>
+                <p class="mb-2"><strong>Total Price:</strong> {{ order.totalOrderPrice }} EGP</p>
+                <p class="mb-4"><strong>Status:</strong> {{ order.isPaid ? 'Paid' : 'Not Paid' }} | {{ order.isDelivered
+                    ?
+                    'Delivered' : 'Pending' }}</p>
+
+                <table class="w-full border border-gray-400">
+                    <thead>
+                        <tr class="bg-gray-100 text-left">
+                            <th class="p-2 border">Image</th>
+                            <th class="p-2 border">Product</th>
+                            <th class="p-2 border">Brand</th>
+                            <th class="p-2 border">Price</th>
+                            <th class="p-2 border">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of order.cartItems">
+                            <td class="p-2 border">
+                                <img [src]="item.product.imageCover" alt="{{ item.product.title }}"
+                                    class="w-16 h-16 object-cover rounded">
+                            </td>
+                            <td class="p-2 border">{{ item.product.title }}</td>
+                            <td class="p-2 border">{{ item.product.brand.name }}</td>
+                            <td class="p-2 border">{{ item.price }} EGP</td>
+                            <td class="p-2 border">{{ item.count }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <ng-template #noOrders>
+            <p class="text-center text-lg text-gray-500">No orders found.</p>
+        </ng-template>
+    </div>
+</section>

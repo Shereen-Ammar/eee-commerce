@@ -1,0 +1,21 @@
+<section class="py-[40px] bg-violet-50">
+    <div class="container">
+        <h2
+            class="py-[40px] text-center text-[45px] font-[600] leading-[32px] text-secondColor [text-shadow:_2px_2px_3px_rgba(86,8,94,0.5)]">
+            Shop popular categories</h2>
+
+        <owl-carousel-o [options]="categoryOptions">
+
+            @for (category of categoriesList; track category._id) {
+            <ng-template carouselSlide [id]="category._id">
+                <div class="border-2 rounded border-gray-400 ">
+                    <img [src]="category.image" class="w-full h-[300px]" [alt]="category.name">
+                    <h3>{{category.name}}</h3>
+                </div>
+
+            </ng-template>
+            }
+
+        </owl-carousel-o>
+    </div>
+</section>

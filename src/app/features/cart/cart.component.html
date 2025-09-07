@@ -1,0 +1,94 @@
+<section class="bg-gray-400 p-4">
+
+    <div class="container grid sm:grid-cols-12 gap-10">
+
+        <div class="col-span-8 px-3 my-left">
+
+            <div class="title">
+                <h2 routerLink="/products" class="pb-[13px] text-xl font-[700] leading-[20px] cursor-pointer">
+                    <span class="text-2xl">
+                        < </span>
+                            Shopping continue
+                </h2>
+                <hr>
+                <h1 class="pt-[15px] text-2xl ps-[10px] font-[700] leading-[25px]">Shopping Cart</h1>
+                <h3 class="ps-[10px] font-[500] tect-[13px] text-secondColor">You have {{cartDetails.products.length}}
+                    item in your cart</h3>
+            </div>
+
+
+            @for (item of cartDetails.products; track item.product._id) {
+
+            <div
+                class="my-product mt-[35px] px-[15px] bg-gray-700 py-[20px] grid sm:grid-cols-12 shadow rounded-2xl gap-6 items-center">
+                <div class="col-span-2 ">
+                    <img [src]="item.product.imageCover" class="rounded-xl" [alt]="item.product.title">
+                </div>
+
+                <div class="col-span-4 ">
+                    <div class="flex flex-col justify-center">
+                        <h3>{{ item.product.title .split(" " ,3).join(" ")}}</h3>
+                        <h4 class="text-gray-900">{{item.product.brand.name}}</h4>
+                    </div>
+                </div>
+
+                <div class="col-span-6 flex items-center justify-around">
+
+                    <div class="flex items-center justify-center">
+                        <h3 class="pe-[8px] text-xl font-[500]">{{ item.count }}</h3>
+                        <div class="flex flex-col">
+                            <i (click)="updateCount(item.product._id , item.count+1 )"
+                                class="fas fa-caret-up cursor-pointer"></i>
+                            <i (click)="updateCount(item.product._id , item.count-1 )"
+                                class="fas fa-caret-down cursor-pointer"></i>
+                        </div>
+                    </div>
+
+                    <h4>{{item.price * item.count}} EGP</h4>
+
+                    <i (click)="removeItem(item.product._id)"
+                        class="fas fa-trash-can text-red-700 text-[20px] cursor-pointer"></i>
+
+                </div>
+
+            </div>
+
+            }
+
+
+
+
+
+
+        </div>
+
+
+        <div class="col-span-4 h-fit bg-gray-700 rounded-2xl p-6 shadow text-[cyan]">
+            <h2 class="text-2xl py-2">Order Summary :</h2>
+
+            <div class="flex justify-between items-center my-6 px-2">
+                <h3>Price</h3>
+                <h4>{{cartDetails.totalCartPrice}} EGP</h4>
+            </div>
+
+            <div class="btn-container flex justify-center items-center">
+                <button [routerLink]="['/checkout' , cartDetails._id]" class="star-btn">
+                    Proceed to checkout
+                    <span class="star star1">✦</span>
+                    <span class="star star2">✦</span>
+                    <span class="star star3">✦</span>
+                    <span class="star star4">✦</span>
+                    <span class="star star5">✦</span>
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+</section>

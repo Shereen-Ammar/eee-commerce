@@ -1,0 +1,37 @@
+<section class="bg-gray-200 md:w-1/2 shadow p-10 rounded-xl my-14 mx-auto">
+
+
+    <h1 class="text-center text-[30px] font-[500] mb-[20px]">CheckOut</h1>
+
+
+    <form [formGroup]="checkOutForm">
+
+        <app-input [element]="'text'" [control]="checkOutForm.get('shippingAddress')?.get('details')"
+            [idInput]="'details'" [labelInput]="'Details'"></app-input>
+
+
+        <app-input [element]="'input'" [control]="checkOutForm.get('shippingAddress')?.get('phone') "
+            [idInput]="'phone'" [labelInput]="'Phone'" [typeInput]="'tel'">
+            accept only egypt phone number
+        </app-input>
+
+        <app-input [element]="'input'" [control]="checkOutForm.get('shippingAddress')?.get('city') " [idInput]="'city'"
+            [labelInput]="'City'" [typeInput]="'text'"></app-input>
+
+
+        <div class="flex items-center justify-around py-[15px]">
+
+            <button type="button" (click)="submitForm()" class="star-btn">Payment By Visa</button>
+            <button type="button" (click)="submitFormByCash()" class="star-btn">Payment By Cash</button>
+
+        </div>
+
+
+    </form>
+
+
+
+
+
+
+</section>

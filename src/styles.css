@@ -1,1 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@theme {
+    --color-mainColor: #9f0aad;
+    --color-secondColor: #56085e;
+}
+
+@utility container {
+    margin-inline: auto;
+}
+
+
+
+@layer components {
+    .main-input {
+        @apply block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600;
+    }
+
+    .main-lable {
+        @apply absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
+    }
+
+    .btn {
+        @apply disabled:bg-gray-600 disabled:cursor-not-allowed bg-secondColor text-white py-1 mt-2 cursor-pointer hover:bg-[#9b069b] transition-all duration-300;
+    }
+}
+
+
+body {
+    font-family: "Nata Sans", sans-serif;
+}
+
+.card {
+    @apply border-2 rounded border-gray-400 shadow-lg p-2 relative;
+}
+
+
+:root {
+    --main-color: #9f0aad;
+    --light-color: #f0f3f2;
+    --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+        rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+        rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+    --font-family: "Encode Sans Expanded", sans-serif;
+    --rating-color: #ffc908;
+}
+
+.btn-main {
+    background-color: var(--main-color);
+    padding: 7px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.btn-main:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+.btn-main:disabled:hover {
+    background-color: #ccc;
+}
+
+.btn-main:hover {
+    background-color: #4a0550;
+    transform: scale(1.1);
+    transition: all .5s;
+}
+
+
+
+
+/* my star button */
+
+.star-btn {
+    background: rgb(83, 3, 83);
+    color: cyan;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: box-shadow 0.3s ease;
+}
+
+.star-btn:hover {
+    box-shadow: 0 0 25px cyan;
+}
+
+.star {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: white;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%,
+            68% 57%, 79% 91%, 50% 70%,
+            21% 91%, 32% 57%, 2% 35%,
+            39% 35%);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+    transition: all 0.8s ease;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+}
+
+/* النجوم اللي تفضل حوالين البوتون */
+.btn-container:hover .star1 {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(-90px, -60px) scale(1.2);
+}
+
+.btn-container:hover .star4 {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(-110px, 20px) scale(1.2);
+}
+
+.btn-container:hover .star5 {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(90px, 60px) scale(1.2);
+}
+
+/* النجمتين اللي هيثبتوا جوا البوتون */
+.btn-container:hover .star2 {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(40px, -15px) scale(0.7);
+    /* جوه الزر فوق يمين */
+}
+
+.btn-container:hover .star3 {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(-35px, 30px) scale(0.7);
+    /* تحت شمال على القطر */
+}
