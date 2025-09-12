@@ -14,6 +14,8 @@ import { NotfoundComponent } from './features/notfound/notfound.component';
 import { authGuard } from './core/guards/auth-guard';
 import { isloggedGuard } from './core/guards/islogged-guard';
 import { AllordersComponent } from './features/allorders/allorders.component';
+import { ForgotpasswordComponent } from './core/auth/forgotpassword/forgotpassword.component';
+import { WishlistComponent } from './features/wishlist/wishlist.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +24,8 @@ export const routes: Routes = [
         canActivate: [isloggedGuard],
         children: [
             { path: 'login', component: LoginComponent, title: "Login page" },
-            { path: 'register', component: RegisterComponent, title: "Register page" }
+            { path: 'register', component: RegisterComponent, title: "Register page" },
+            { path: 'forgotpassword', component: ForgotpasswordComponent, title: "forgotpassword page" }
         ]
     },
     {
@@ -38,6 +41,7 @@ export const routes: Routes = [
             { path: 'details/:slug/:id', component: DetailsComponent, title: 'details page' },
             { path: 'details/:id', component: DetailsComponent, title: 'details page' },
             { path: 'checkout/:id', component: CheckoutComponent, title: 'checkout page' },
+            { path: 'wishlist', component: WishlistComponent, title: 'wishlist page' },
         ]
     },
     { path: '**', component: NotfoundComponent, title: 'notfound page' }

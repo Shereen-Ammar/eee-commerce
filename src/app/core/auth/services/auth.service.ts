@@ -47,5 +47,17 @@ export class AuthService {
     return token;
   }
 
+  submitVerifyEmail(data: object): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + `auth/forgotPasswords`, data)
+  }
+
+  submitVerifyCode(data: object): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + `auth/verifyResetCode`, data)
+  }
+
+  submitResetPassword(data: object): Observable<any> {
+    return this.httpClient.put(environment.baseUrl + `auth/resetPassword`, data)
+  }
+
 
 }

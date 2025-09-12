@@ -3,9 +3,10 @@ import { CardComponent } from "../../shared/components/card/card.component";
 import { Product } from '../../core/models/product.interface';
 import { ProductsService } from '../../core/services/products/products.service';
 
-import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPipe } from '../../shared/pipes/search-pipe';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
-  private readonly ProductsService = inject(ProductsService)
+  private readonly ProductsService = inject(ProductsService);
+  private readonly ngxSpinnerService = inject(NgxSpinnerService);
 
   pageSize!: number;
   p!: number;
@@ -28,6 +30,7 @@ export class ProductsComponent implements OnInit {
     this.getAllProductsData()
   }
   getAllProductsData(pageNumber: number = 1): void {
+    this.ngxSpinnerService.show();
     this.ProductsService.getAllProducts(pageNumber).subscribe({
       next: (res) => {
         console.log(res.data);
@@ -36,9 +39,14 @@ export class ProductsComponent implements OnInit {
         this.pageSize = res.metadata.limit;
         this.p = res.metadata.currentPage;
         this.total = res.results;
+
+        this.ngxSpinnerService.hide();
       },
       error: (err) => {
         console.log(err);
+
+        this.ngxSpinnerService.hide();
+
       }
     })
   }

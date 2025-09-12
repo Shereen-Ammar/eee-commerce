@@ -1,5 +1,5 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 
@@ -7,16 +7,12 @@ import { environment } from '../../../../environments/environment.development';
   providedIn: 'root'
 })
 export class CategoriesService {
-
-
   private readonly httpClient = inject(HttpClient);
 
   //  Get All Categories
   getAllCategories(): Observable<any> {
-    return this.httpClient.get(environment.baseUrl + 'categories')
+    return this.httpClient.get(environment.baseUrl + 'categories');
   }
-
-
 
   //  Get SubCategories by CategoryId
   getSubCategoriesByCategoryId(categoryId: string): Observable<any> {
@@ -32,5 +28,4 @@ export class CategoriesService {
   getProductsBySubCategoryId(subCategoryId: string): Observable<any> {
     return this.httpClient.get(environment.baseUrl + `products?subcategory[in]=${subCategoryId}`);
   }
-
 }

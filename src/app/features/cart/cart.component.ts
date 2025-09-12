@@ -36,6 +36,7 @@ export class CartComponent implements OnInit {
     this.cartService.removeSpecificCartItem(id).subscribe({
       next: (res) => {
         console.log(res);
+        this.cartService.countNumber.next(res.numOfCartItems);
         this.cartDetails = res.data;
       },
       error: (err) => {

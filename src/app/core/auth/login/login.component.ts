@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from "../../../shared/components/input/input.component";
 import { Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, InputComponent],
+  imports: [ReactiveFormsModule, InputComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

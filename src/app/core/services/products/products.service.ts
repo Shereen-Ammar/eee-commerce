@@ -16,5 +16,10 @@ export class ProductsService {
 
 
 
+  // Get products by category
+  getProductsByCategory(categoryId: string, page: number = 1): Observable<any> {
+    return this.httpClient.get(environment.baseUrl + `products?category=${categoryId}&page=${page}`);
+  }
+
 
 }

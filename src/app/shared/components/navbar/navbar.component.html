@@ -82,7 +82,15 @@
                 <li>
                     <a routerLink="/cart" routerLinkActive="text-mainColor"
                         class="block py-2 px-3 rounded-sm  md:p-1 text-gray-700 hover:text-mainColor transition-colors duration-200 "
-                        aria-current="page"><i class="fas fa-cart-shopping text-xl"></i></a>
+                        aria-current="page"><i class="fas fa-cart-shopping text-xl"></i>
+                        <span class="relative bottom-3 end-0 z-10 rounded text-gray-800 text-[15px] p-[2px]">
+                            {{count}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/wishlist" routerLinkActive="text-red-900" class="block py-2 px-3  md:p-1 "
+                        aria-current="page"><i class="fas fa-heart text-red-700 cursor-pointer"></i>
+                    </a>
                 </li>
                 <li>
                     <a (click)="signOut()"

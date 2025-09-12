@@ -1,1 +1,39 @@
-<p>categories works!</p>
+<div class="container mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-6">Categories</h2>
+
+    <!-- Categories -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
+        <div *ngFor="let category of categories" (click)="onCategoryClick(category._id)"
+            class="cursor-pointer rounded-2xl shadow-md p-4 text-center bg-white hover:bg-purple-100 transition-all">
+            <img [src]="category.image" alt="{{ category.name }}" class="h-24 mx-auto mb-2 object-contain">
+            <p class="font-medium">{{ category.name }}</p>
+        </div>
+
+    </div>
+
+    <!-- Subcategories -->
+    <div *ngIf="subcategories.length > 0" class="mb-8">
+        <h3 class="text-lg font-semibold mb-3">Subcategories</h3>
+        <div class="flex flex-wrap gap-3">
+            <button *ngFor="let sub of subcategories" (click)="onSubCategoryClick(sub._id)"
+                class="px-4 py-2 rounded-full border bg-gray-100 hover:bg-purple-200 transition-all">
+                {{ sub.name }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <div *ngIf="products.length > 0">
+        <h3 class="text-xl font-semibold mb-4">Products</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div *ngFor="let product of products"
+                class="border rounded-2xl shadow p-3 hover:shadow-lg transition-all bg-white">
+                <img [src]="product.imageCover" alt="{{ product.title }}" class="h-40 w-full object-contain mb-2">
+                <h4 class="font-semibold truncate">{{ product.title }}</h4>
+                <p class="text-gray-600 text-sm">{{ product.price }} EGP</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>

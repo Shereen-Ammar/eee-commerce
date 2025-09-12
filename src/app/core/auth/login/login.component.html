@@ -17,16 +17,20 @@
 
         </app-input>
 
+        <div class="flex items-center justify-between space-x-10">
+            <a routerLink="/forgotpassword" class="text-sky-500 cursor-pointer">Forgot password</a>
 
-        <div class="flex justify-end">
-            <button class="btn py-[7px] px-[40px] rounded " type="submit">
-                login
+            <div class="flex justify-end">
+                <button class="btn py-[7px] px-[40px] rounded " type="submit">
+                    login
 
-                @if (isLoading) {
-                <span> <i class="fas fa-spinner animate-spin"></i> </span>
-                }
+                    @if (isLoading) {
+                    <span> <i class="fas fa-spinner animate-spin"></i> </span>
+                    }
 
-            </button>
+                </button>
+            </div>
+
         </div>
 
         @if (msgError) {
